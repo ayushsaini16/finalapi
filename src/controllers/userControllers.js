@@ -123,4 +123,15 @@ const leader = async (req, res) => {
   }
 };
 
-module.exports = { signup, signin, userdetails, leader };
+const getleader = async (req, res) => {
+  try {
+    // Fetch leaderboard details from the database
+    const leaderboardDetails = await leaderboardModel.find().exec();
+    res.status(200).json({ leaderboardDetails });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Failed to fetch leaderboard details" });
+  }
+};
+
+module.exports = { signup, signin, userdetails, leader, getleader };

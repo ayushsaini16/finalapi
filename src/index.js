@@ -6,6 +6,7 @@ const multer = require("multer");
 const ImageModel = require("./models/image.model");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const { getleader } = require("./controllers/userControllers");
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use("/users", userRouter);
 app.get("/", (req, res) => {
   res.send("Hello");
 });
+app.get("/api/leaderboard", getleader);
 
 const PORT = process.env.PORT || 5000;
 
